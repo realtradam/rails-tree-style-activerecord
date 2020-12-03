@@ -1,15 +1,22 @@
 <h1> suh </h1>
 
+<p>
 <% @rootnodes.each do |rootnode| %>
-  <tr>
-    <td>PARENT: <%= rootnode.title %></td>
-  </tr><br>
-  <em>
-    <% rootnode.children.each do |node| %>
-      <tr>
-        <td>CHILD: <%= node[:title] %></td>
-      </tr><br>
-    <% end %>
-  </em>
+  <% if rootnode.children.any? %>
+    <details class="indent">
+      <summary><%= rootnode.title %></summary>
+      <% rootnode.children.each do |node| %>
+        <%= showNestedChildren(node, 1) %>
+      <% end %>
+    </details>
+  <% else %>
+      <div class="indent"><%= rootnode.title %></div>
+  <% end %>
 <% end %>
+</p>
+
+<details>
+  <summary>See More</summary>
+  This text will be hidden if your browser supports it.
+</details>
 

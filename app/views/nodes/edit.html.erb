@@ -1,0 +1,21 @@
+<h1>edit wiki page</h1>
+<%= form_with(model: @node, local: true) do |form| %>
+  <p>
+  <%= form.label :title %><br>
+  <%= form.text_field :title %>
+  </p>
+
+  <p>
+  <%= form.label :content %><br>
+  <%= form.text_area :content %>
+  </p>
+
+  <%= form.collection_select :parent, @nodes, :id, :title, include_blank: true, :selected => @node&.parent&.id %>
+  
+
+  <p>
+  <%= form.submit %>
+  </p>
+<% end %>
+
+<% link_to 'Back', nodes_path %>
