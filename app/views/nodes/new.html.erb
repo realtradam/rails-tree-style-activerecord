@@ -1,0 +1,18 @@
+<h1>new wiki page</h1>
+<%= form_with scope: :node, url: nodes_path, local: true do |form| %>
+  <p>
+  <%= form.label :title %><br>
+  <%= form.text_field :title %>
+  </p>
+
+  <p>
+  <%= form.label :content %><br>
+  <%= form.text_area :content %>
+  </p>
+
+  <%= form.collection_select :parent, @nodes, :id, :title, include_blank: true %>
+
+  <p>
+  <%= form.submit %>
+  </p>
+<% end %>

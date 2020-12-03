@@ -1,0 +1,15 @@
+<h1> suh </h1>
+
+<% @rootnodes.each do |rootnode| %>
+  <tr>
+    <td>PARENT: <%= rootnode.title %></td>
+  </tr><br>
+  <em>
+    <% rootnode.children.each do |node| %>
+      <tr>
+        <td>CHILD: <%= node[:title] %></td>
+      </tr><br>
+    <% end %>
+  </em>
+<% end %>
+
